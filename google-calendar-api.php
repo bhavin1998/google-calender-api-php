@@ -3,6 +3,7 @@
 class GoogleCalendarApi
 {
 	public function GetAccessToken($client_id, $redirect_uri, $client_secret, $code) {	
+		// $client_id = "bhavin704patel@gmail.com";
 		$url = 'https://accounts.google.com/o/oauth2/token';			
 		
 		$curlPost = 'client_id=' . $client_id . '&redirect_uri=' . $redirect_uri . '&client_secret=' . $client_secret . '&code='. $code . '&grant_type=authorization_code';
@@ -21,6 +22,7 @@ class GoogleCalendarApi
 	}
 
 	public function GetUserCalendarTimezone($access_token) {
+		$client_id = "bhavin704patel@gmail.com";
 		$url_settings = 'https://www.googleapis.com/calendar/v3/users/me/settings/timezone';
 		
 		$ch = curl_init();		
@@ -37,6 +39,7 @@ class GoogleCalendarApi
 	}
 
 	public function GetCalendarsList($access_token) {
+		$client_id = "bhavin704patel@gmail.com";
 		$url_parameters = array();
 
 		$url_parameters['fields'] = 'items(id,summary,timeZone)';
@@ -58,6 +61,7 @@ class GoogleCalendarApi
 	}
 
 	public function CreateCalendarEvent($calendar_id, $summary, $all_day, $event_time, $event_timezone, $access_token) {
+		$client_id = "bhavin704patel@gmail.com";
 		$url_events = 'https://www.googleapis.com/calendar/v3/calendars/' . $calendar_id . '/events';
 
 		$curlPost = array('summary' => $summary);
@@ -85,6 +89,7 @@ class GoogleCalendarApi
 	}
 
 	public function UpdateCalendarEvent($event_id, $calendar_id, $summary, $all_day, $event_time, $event_timezone, $access_token) {
+		$client_id = "bhavin704patel@gmail.com";
 		$url_events = 'https://www.googleapis.com/calendar/v3/calendars/' . $calendar_id . '/events/' . $event_id;
 
 		$curlPost = array('summary' => $summary);
@@ -110,6 +115,7 @@ class GoogleCalendarApi
 	}
 
 	public function DeleteCalendarEvent($event_id, $calendar_id, $access_token) {
+		$client_id = "bhavin704patel@gmail.com";
 		$url_events = 'https://www.googleapis.com/calendar/v3/calendars/' . $calendar_id . '/events/' . $event_id;
 
 		$ch = curl_init();		
